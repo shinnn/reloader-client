@@ -1,0 +1,74 @@
+{
+	"name": "reloader-client",
+	"version": "0.1.0",
+	"description": "Generate a script to reload the current page or its styles in response to server-sent events",
+	"repository": "shinnn/reloader-client",
+	"author": "Shinnosuke Watanabe (https://github.com/shinnn)",
+	"license": "ISC",
+	"scripts": {
+		"pretest": "eslint .",
+		"test": "nyc node test.js"
+	},
+	"files": [
+		"client.js",
+		"client-legacy.js",
+		"index.js"
+	],
+	"keywords": [
+		"reload",
+		"reloader",
+		"refresh",
+		"client",
+		"source",
+		"server-sent-events",
+		"sse",
+		"event",
+		"style",
+		"development",
+		"server"
+	],
+	"dependencies": {
+		"event-source-polyfill": "^1.0.5",
+		"inspect-with-kind": "^1.0.5"
+	},
+	"devDependencies": {
+		"@shinnn/eslint-config": "^6.8.3",
+		"eslint": "^5.12.0",
+		"istanbul-lib-instrument": "^3.0.0",
+		"lodash": "^4.17.11",
+		"nyc": "^13.1.0",
+		"nyc-config-common": "^1.0.1",
+		"output-file": "^2.0.0",
+		"p-wait-for": "^2.0.1",
+		"selenium-webdriver": "^4.0.0-alpha.1",
+		"tape": "^4.9.2"
+	},
+	"eslintConfig": {
+		"extends": "@shinnn",
+		"overrides": [
+			{
+				"files": [
+					"client*.js"
+				],
+				"env": {
+					"browser": true
+				}
+			},
+			{
+				"files": [
+					"client-legacy.js"
+				],
+				"parserOptions": {
+					"ecmaVersion": 5,
+					"sourceType": "script"
+				},
+				"rules": {
+					"no-var": "off"
+				}
+			}
+		]
+	},
+	"nyc": {
+		"extends": "nyc-config-common"
+	}
+}
